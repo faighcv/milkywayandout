@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --space-950: #03030a;
+  --space-900: #060614;
+  --space-800: #0d0d2b;
+  --space-700: #13134d;
+  --nebula-purple: #7c3aed;
+  --nebula-blue: #2563eb;
+  --nebula-cyan: #06b6d4;
+  --nebula-pink: #ec4899;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--space-950);
+  color: #e2e8f0;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.star-field {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px currentColor; }
+  50% { box-shadow: 0 0 28px 10px currentColor; }
+}
+
+.glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--space-900); }
+::-webkit-scrollbar-thumb { background: var(--nebula-purple); border-radius: 3px; }
